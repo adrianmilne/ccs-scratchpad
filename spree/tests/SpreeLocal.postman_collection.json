@@ -1,0 +1,155 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SpreeLocal",
+		"_postman_id": "0395d5b9-0764-eea3-0384-09be97149e80",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://0.0.0.0:3000/spree_oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "username",
+							"value": "spree@example.com",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "password",
+							"value": "spree123",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v2/storefront/products",
+			"request": {
+				"url": "http://localhost:3000/api/v2/storefront/products",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v2/storefront/cart",
+			"request": {
+				"url": "http://localhost:3000/api/v2/storefront/cart",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v2/storefront/cart",
+			"request": {
+				"url": "http://localhost:3000/api/v2/storefront/cart",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v2/storefront/cart - Empty",
+			"request": {
+				"url": "http://localhost:3000/api/v2/storefront/cart/empty",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v2/storefront/cart/add_item",
+			"request": {
+				"url": "http://localhost:3000/api/v2/storefront/cart/add_item",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"variant_id\": \"1\",\n  \"quantity\": 5\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

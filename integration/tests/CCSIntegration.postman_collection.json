@@ -1,0 +1,75 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CCSIntegration",
+		"_postman_id": "a85ea9a0-92bb-0b38-5376-cee9e693f87c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/tenders/status",
+			"request": {
+				"url": "  http://127.0.0.1:3000/tenders/status",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/tenders/",
+			"request": {
+				"url": "  http://127.0.0.1:3000/tenders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reference\": \"AB123456\",\n  \"subject\": \"Laptops for School\",\n  \"route\": \"Call Off (Competition)\",\n  \"ittPlannedStartDate\": \"2019-10-01\",\n  \"ittPlannedEndDate\": \"2019-12-01\",\n  \"organisation\": \"Bristol City Council\",\n  \"commercialAgreement\": \"string\",\n  \"commercialAgreementLot\": \"string\",\n  \"CommonAreaofSpendCategory\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"procurementOwner\": {\n    \"id\": 123456,\n    \"username\": \"joe.bloggs\",\n    \"firstName\": \"joe\",\n    \"lastName\": \"bloggs\",\n    \"email\": \"joe.bloggs@crowncommercial.gov.uk\",\n    \"phone\": \"string\",\n    \"userStatus\": 0\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/tenders/{id}",
+			"request": {
+				"url": "  http://127.0.0.1:3000/tenders/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/tenders/{id}",
+			"request": {
+				"url": "  http://127.0.0.1:3000/tenders/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/users/{username} copy",
+			"request": {
+				"url": "  http://127.0.0.1:3000/users/bob",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

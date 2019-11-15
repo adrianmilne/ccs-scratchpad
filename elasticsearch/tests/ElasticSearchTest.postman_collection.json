@@ -1,0 +1,136 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ElasticSearchTest",
+		"_postman_id": "86619a21-7175-e1d2-84b5-2cbc00d35336",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/services/_search?q=city:London",
+			"request": {
+				"url": {
+					"raw": "https://search-ccs-test-rvoq2isdjgwrtfbqltt7a4xv54.us-east-1.es.amazonaws.com/services/_search?q=city:London",
+					"protocol": "https",
+					"host": [
+						"search-ccs-test-rvoq2isdjgwrtfbqltt7a4xv54",
+						"us-east-1",
+						"es",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"services",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "city:London",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"supplier\": \"Cleaners R Us\", \"type\": [\"Toilet\"], \"employees\": 66, \"city\": [\"London\"]}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/_search?q=city:London",
+			"request": {
+				"url": {
+					"raw": "https://search-ccs-test-rvoq2isdjgwrtfbqltt7a4xv54.us-east-1.es.amazonaws.com/_search?q=city:London",
+					"protocol": "https",
+					"host": [
+						"search-ccs-test-rvoq2isdjgwrtfbqltt7a4xv54",
+						"us-east-1",
+						"es",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "city:London",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"supplier\": \"Cleaners R Us\", \"type\": [\"Toilet\"], \"employees\": 66, \"city\": [\"London\"]}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create - /products/_doc/1",
+			"request": {
+				"url": "https://search-ccs-test-rvoq2isdjgwrtfbqltt7a4xv54.us-east-1.es.amazonaws.com/products/_doc/1 ",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"supplier\": \"Offices R Us\", \"products\": [\"Desks\", \"Pens\",\"Paper\"], \"employees\": 100, \"city\": [\"London\",\"Cardiff\"]}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - /products/_doc/1",
+			"request": {
+				"url": "https://search-ccs-test-rvoq2isdjgwrtfbqltt7a4xv54.us-east-1.es.amazonaws.com/products/_doc/1 ",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"supplier\": \"Offices R Us\", \"products\": [\"Desks\", \"Pens\",\"Paper\"], \"employees\": 100, \"city\": [\"London\",\"Cardiff\"]}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
