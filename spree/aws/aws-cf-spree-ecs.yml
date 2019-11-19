@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Parameters:
+  StackName:
+    Type: String
+    Default: spree-ecs
+    Description: The name of the parent Fargate networking stack that you created. Necessary
+                 to locate and reference resources created by that stack.
+Resources:
+
+  SpreeSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupName: SpreeSecurityGroup
+      GroupDescription: SpreeTest
+      SecurityGroupIngress: 
+        - 
+          IpProtocol : "-1"
+          CidrIp : "0.0.0.0/0"
+
+  SpreeTaskDefinition: 
+    Type: AWS::ECS::TaskDefinition
+    Properties: 
+      RequiresCompatibilities: 
+        - 
+          FARGATE
+      NetworkMode: awsvpc
+      Cpu: 256
+      Memory: 512
+      ContainerDefinitions: 
+        - 
+          Name: Spree
+          Image: "spreecommerce/spree:3.6.4"
+          PortMappings: 
+            - 
+              ContainerPort: "3000"
+              HostPort: "3000"
+          Essential: true
+  SpreeTestCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: Spree-Test-Cluster
+  SpreeService: 
+    Type: AWS::ECS::Service
+    Properties: 
+      Cluster: !Ref SpreeTestCluster
+      DesiredCount: 1
+      TaskDefinition: !Ref SpreeTaskDefinition
+      LaunchType: FARGATE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups:
+            - !GetAtt SpreeSecurityGroup.GroupId
+          Subnets:
+            - subnet-e7c8b780
